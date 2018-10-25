@@ -1,0 +1,38 @@
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+struct telephone
+{
+	char areacode[5];
+	char exchange[5];
+	char number[5];
+};
+
+telephone phone (telephone &p)
+{
+	strcpy(p.areacode,"098");
+	strcpy(p.exchange,"386");
+	strcpy(p.number,"1748");
+	cout<<"My number is ("<<p.areacode<<") "<<p.exchange<<"-"<<p.number;
+	return p;
+}
+
+void input(telephone &p)
+{
+	cout<<"\nEnter your area code, exchange, and number: ";
+	cin>>p.areacode>>p.exchange>>p.number;
+}
+void output (telephone p)
+{
+	cout<<"\nYour number is ("<<p.areacode<<") "<<p.exchange<<"-"<<p.number;
+}
+
+int main(int argc, char *argv[]) 
+{
+	telephone p;
+	input(p);
+	phone(p);
+	output(p);
+	return 0;
+}
