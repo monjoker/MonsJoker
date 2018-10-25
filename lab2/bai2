@@ -1,0 +1,51 @@
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+struct tinhlai
+{
+	int amount;
+	int year;
+	float rate;
+};
+void input(tinhlai &tl)
+{
+	do
+	{
+	cout<<"\nEnter initial amount: ";
+	cin>>tl.amount;
+	}
+	while(tl.amount<0);
+	do
+	{
+		cout<<"\nEnter number of years: ";
+		cin>>tl.year;	
+	}while(tl.year<0);
+	do
+	{
+		cout<<"\nEnter interest rate (percent per year): ";
+		cin>>tl.rate;
+		tl.rate/=100;
+	}while(tl.rate<0);
+}
+float math(tinhlai tl)
+{
+	float S = tl.amount;
+	for(int i = 0;i<tl.year;i++)
+	{
+		S =S+(S*tl.rate);
+	}	
+	return S;
+}
+void output(tinhlai tl)
+{
+	cout<<"\nAt the end of "<<tl.year<<"years, you will have "<<math(tl)<<" dollars.";
+}
+
+int main(int argc, char *argv[]) 
+{
+	tinhlai tl;
+	input(tl);
+	output(tl);
+	return 0;
+}
