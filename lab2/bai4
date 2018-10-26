@@ -1,0 +1,66 @@
+#include <iostream>
+#include <conio.h>
+using namespace std;
+
+class phanso
+{
+public:
+	int tuso;
+	int mauso;
+	void input()
+	{
+		cin >> tuso; 
+		cout << "/";
+		cin >> mauso;
+	}
+};
+
+void tinhtoan()
+{
+	phanso ps1, ps2;
+	char ope;
+	float ketqua;
+	cout << "\nnhap vao phan so dau tien, dau, phan so thu 2: ";
+	ps1.input();
+	cin >> ope;
+	ps2.input();
+	switch (ope)
+	{
+	case '+':
+		ketqua = ((ps1.tuso*ps2.mauso + ps2.tuso*ps1.mauso) / (ps1.mauso*ps2.mauso));
+		cout << "\nAddition: a/b + c/d = (a*d + b*c) / (b*d) = " << ketqua;
+		break;
+	case '-':
+		ketqua = ((ps1.tuso*ps2.mauso - ps2.tuso*ps1.mauso) / (ps1.mauso*ps2.mauso));
+		cout << "\nSubtraction: a/b - c/d = (a*d - b*c) / (b*d) = " << ketqua;
+		break;
+	case '*':
+		ketqua = ((ps1.tuso*ps2.tuso) / (ps1.mauso*ps2.mauso));
+		cout << "\nMultiplication: a/b * c/d = (a*c) / (b*d) = " << ketqua;
+		break;
+	case '/':
+		ketqua = ((ps1.tuso*ps1.mauso) / (ps1.mauso*ps2.tuso));
+		cout << "\nDivision: a/b / c/d = (a*d) / (b*c) = " << ketqua;
+		break;
+	}
+}
+
+int main()
+{
+	char k;
+	do
+	{
+		tinhtoan();
+		cout << "\nDo another (y/n)?";
+		cin >> k;
+		if (k == 'n')
+		{
+			return 0;
+			break;
+		}
+		else if (k != 'y'&&k != 'n')
+		{
+			cin >> k;
+		}
+	} while (k == 'y');
+}
