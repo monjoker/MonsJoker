@@ -17,11 +17,33 @@ public:
 	}
 };
 
+void rutgonps(int tuso, int mauso)
+{
+	int n;
+	float a, b;
+	if (tuso < mauso)
+		n = tuso;
+	else
+		n = mauso;
+	for (int i = n; i > 0; i--)
+	{
+		a = (float)tuso / (float)i;
+		b = (float)mauso / (float)i;
+		if (a == (int)a&&b == (int)b&&a > 0 & b > 0)
+		{
+			cout << a << " / " << b;
+			break;
+		}
+	}
+}
+
 void tinhtoan()
 {
 	phanso ps1, ps2;
 	char ope;
 	float ketqua;
+	int tuso;
+	int mauso;
 	cout << "\nnhap vao phan so dau tien, dau, phan so thu 2: ";
 	ps1.input();
 	cin >> ope;
@@ -29,20 +51,28 @@ void tinhtoan()
 	switch (ope)
 	{
 	case '+':
-		ketqua = ((float)(ps1.tuso*ps2.mauso + ps2.tuso*ps1.mauso) / (float)(ps1.mauso*ps2.mauso));
-		cout << "\nAddition: a/b + c/d = (a*d + b*c) / (b*d) = " << ketqua;
+		tuso = (ps1.tuso*ps2.mauso + ps2.tuso*ps1.mauso);
+		mauso = (ps1.mauso*ps2.mauso);
+		cout << "\nAddition: a/b + c/d = (a*d + b*c) / (b*d) = ";
+		rutgonps(tuso, mauso);
 		break;
 	case '-':
-		ketqua = ((float)(ps1.tuso*ps2.mauso - ps2.tuso*ps1.mauso) / (float)(ps1.mauso*ps2.mauso));
-		cout << "\nSubtraction: a/b - c/d = (a*d - b*c) / (b*d) = " << ketqua;
+		tuso = (ps1.tuso*ps2.mauso - ps2.tuso*ps1.mauso);
+		mauso = (ps1.mauso*ps2.mauso);
+		cout << "\nSubtraction: a/b - c/d = (a*d - b*c) / (b*d) = ";
+		rutgonps(tuso, mauso);
 		break;
 	case '*':
-		ketqua = ((float)(ps1.tuso*ps2.tuso) / (float)(ps1.mauso*ps2.mauso));
-		cout << "\nMultiplication: a/b * c/d = (a*c) / (b*d) = " << ketqua;
+		tuso = (ps1.tuso*ps2.tuso);
+		mauso = (ps1.mauso*ps2.mauso);
+		cout << "\nMultiplication: a/b * c/d = (a*c) / (b*d) = ";
+		rutgonps(tuso, mauso);
 		break;
 	case '/':
-		ketqua = ((float)(ps1.tuso*ps1.mauso) / (float)(ps1.mauso*ps2.tuso));
-		cout << "\nDivision: a/b / c/d = (a*d) / (b*c) = " << ketqua;
+		tuso = (ps1.tuso*ps2.mauso);
+		mauso = (ps1.mauso*ps2.tuso);
+		cout << "\nDivision: a/b / c/d = (a*d) / (b*c) = ";
+		rutgonps(tuso, mauso);
 		break;
 	}
 }
